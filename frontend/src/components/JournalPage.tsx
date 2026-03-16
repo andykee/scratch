@@ -7,16 +7,20 @@ export function JournalPage() {
   const { entries, loading, error, load, saveEntry } = useEntries()
   const [query, setQuery] = useState('')
   const bottomRef = useRef<HTMLDivElement>(null)
+  const hasScrolled = useRef(false)
 
   useEffect(() => {
     load()
   }, [load])
 
   useEffect(() => {
-    if (!loading && entries.length > 0 && !query) {
-      bottomRef.current?.scrollIntoView({ behavior: 'instant' })
+    if (!loading && entries.length > 0 && !hasScrolled.current) {
+      hasScrolled.current = true
+      requestAnimationFrame(() => {
+        bottomRef.current?.scrollIntoView({ behavior: 'instant' })
+      })
     }
-  }, [loading, entries.length, query])
+  }, [loading, entries.length])
 
   if (error) return <div className="error-state">Error: {error}</div>
 
