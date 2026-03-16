@@ -137,6 +137,16 @@ def create_entry(body: EntryCreate, db: Session = Depends(get_db)):
     return entry
 
 
+@router.delete("/{date}", status_code=204)
+def delete_entry(date: str, db: Session = Depends(get_db)):
+    entry = db.query(Entry).filter(Entry.date == date).first()
+    if entry is None:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    db.execute(text("DELETE FROM entries_fts WHERE rowid = :rowid"), {"rowid": entry.id})
+    db.delete(entry)
+    db.commit()
+
+
 @router.put("/{date}", response_model=EntryResponse)
 def update_entry(date: str, body: EntryUpdate, db: Session = Depends(get_db)):
     entry = db.query(Entry).filter(Entry.date == date).first()
