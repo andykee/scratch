@@ -5,7 +5,7 @@
 }
 
 :root {
-  --bg: #fafaf8;
+  --bg: rgb(251, 254, 251);
   --surface: #ffffff;
   --border: #e5e4e0;
   --text: #1a1a18;
@@ -18,7 +18,7 @@
 }
 
 [data-theme="dark"] {
-  --bg: #1a1a18;
+  --bg: rgb(40, 39, 40);
   --surface: #242422;
   --border: #38382e;
   --text: #e8e8e4;
