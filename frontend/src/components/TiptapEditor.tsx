@@ -5,6 +5,7 @@ import TaskItem from '@tiptap/extension-task-item'
 import Placeholder from '@tiptap/extension-placeholder'
 import Typography from '@tiptap/extension-typography'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import { ColorDecorator } from '../extensions/colorDecorator'
 import { createLowlight, common } from 'lowlight'
 
 const lowlight = createLowlight(common)
@@ -23,6 +24,7 @@ export function TiptapEditor({ content, onUpdate }: Props) {
       TaskItem.configure({ nested: true }),
       Placeholder.configure({ placeholder: 'Write something...' }),
       Typography,
+      ColorDecorator,
     ],
     content,
     onUpdate: ({ editor }) => {

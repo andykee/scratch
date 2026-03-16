@@ -228,6 +228,23 @@ body {
   font-size: 0.875em;
 }
 
+/* Hex color decorator */
+.tiptap-editor .ProseMirror .color {
+  --color: transparent;
+}
+
+.tiptap-editor .ProseMirror .color::before {
+  content: '';
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  background: var(--color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  margin-right: 0.2em;
+  vertical-align: middle;
+}
+
 /* Syntax highlighting */
 .tiptap-editor .ProseMirror pre .hljs-comment,
 .tiptap-editor .ProseMirror pre .hljs-quote     { color: #8a8a85; font-style: italic; }
