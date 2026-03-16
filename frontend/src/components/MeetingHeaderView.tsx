@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { NodeViewWrapper } from '@tiptap/react'
-
-interface Props {
-  node: { attrs: { time: string; name: string } }
-  updateAttributes: (attrs: { time?: string; name?: string }) => void
-}
+import type { NodeViewProps } from '@tiptap/core'
 
 const TAG_RE = /(#[a-zA-Z]\w*)/g
 
@@ -15,7 +11,7 @@ function toHighlightedHTML(text: string): string {
     .replace(TAG_RE, '<span class="tag">$1</span>')
 }
 
-export function MeetingHeaderView({ node, updateAttributes }: Props) {
+export function MeetingHeaderView({ node, updateAttributes }: NodeViewProps) {
   const timeRef = useRef<HTMLInputElement>(null)
   const nameRef = useRef<HTMLDivElement>(null)
   const { time, name } = node.attrs
