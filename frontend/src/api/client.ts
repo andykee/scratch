@@ -26,4 +26,7 @@ export const api = {
 
   search: (q: string) =>
     request<Entry[]>(`/api/entries/search?q=${encodeURIComponent(q)}`),
+
+  deleteEntry: (date: string) =>
+    fetch(`/api/entries/${date}`, { method: 'DELETE' }),
 }
