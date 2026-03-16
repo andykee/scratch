@@ -228,6 +228,25 @@ body {
   font-size: 0.875em;
 }
 
+/* Syntax highlighting */
+.tiptap-editor .ProseMirror pre .hljs-comment,
+.tiptap-editor .ProseMirror pre .hljs-quote     { color: #8a8a85; font-style: italic; }
+.tiptap-editor .ProseMirror pre .hljs-keyword,
+.tiptap-editor .ProseMirror pre .hljs-selector-tag,
+.tiptap-editor .ProseMirror pre .hljs-built_in  { color: #c678dd; }
+.tiptap-editor .ProseMirror pre .hljs-string,
+.tiptap-editor .ProseMirror pre .hljs-attr,
+.tiptap-editor .ProseMirror pre .hljs-attribute { color: #98c379; }
+.tiptap-editor .ProseMirror pre .hljs-number,
+.tiptap-editor .ProseMirror pre .hljs-literal   { color: #d19a66; }
+.tiptap-editor .ProseMirror pre .hljs-title,
+.tiptap-editor .ProseMirror pre .hljs-function  { color: #61afef; }
+.tiptap-editor .ProseMirror pre .hljs-type,
+.tiptap-editor .ProseMirror pre .hljs-class     { color: #e5c07b; }
+.tiptap-editor .ProseMirror pre .hljs-variable,
+.tiptap-editor .ProseMirror pre .hljs-params    { color: #e06c75; }
+.tiptap-editor .ProseMirror pre .hljs-meta      { color: #56b6c2; }
+
 /* Task list */
 .tiptap-editor .ProseMirror ul[data-type="taskList"] {
   list-style: none;
