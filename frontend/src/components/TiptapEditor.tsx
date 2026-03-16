@@ -7,6 +7,7 @@ import Typography from '@tiptap/extension-typography'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import Link from '@tiptap/extension-link'
 import { ColorDecorator } from '../extensions/colorDecorator'
+import { MeetingHeader } from '../extensions/meetingHeader'
 import { createLowlight, common } from 'lowlight'
 
 const lowlight = createLowlight(common)
@@ -34,6 +35,7 @@ export function TiptapEditor({ content, onUpdate }: Props) {
         },
       }),
       ColorDecorator,
+      MeetingHeader,
     ],
     content,
     onUpdate: ({ editor }) => {

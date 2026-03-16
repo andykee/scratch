@@ -313,6 +313,53 @@ body {
   flex: 1;
 }
 
+/* Meeting header */
+.meeting-header .meeting-header-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.meeting-header input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font);
+  color: var(--text);
+  padding: 0;
+}
+
+.meeting-header .meeting-header-time {
+  width: 4em;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.meeting-header .meeting-header-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  outline: none;
+}
+
+.meeting-header .meeting-header-name:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  font-weight: normal;
+  pointer-events: none;
+}
+
+.meeting-header input::placeholder {
+  color: var(--text-muted);
+}
+
 /* Todo view */
 .todo-view-list {
   list-style: none;

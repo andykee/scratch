@@ -31,6 +31,12 @@ def extract_text(content_json: str) -> str:
         if isinstance(node, dict):
             if node.get("type") == "text":
                 texts.append(node.get("text", ""))
+            elif node.get("type") == "meetingHeader":
+                attrs = node.get("attrs", {})
+                if attrs.get("time"):
+                    texts.append(attrs["time"])
+                if attrs.get("name"):
+                    texts.append(attrs["name"])
             for child in node.get("content", []):
                 walk(child)
         elif isinstance(node, list):
