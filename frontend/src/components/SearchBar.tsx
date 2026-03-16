@@ -8,7 +8,7 @@ export function SearchBar({ value, onChange }: Props) {
     <div className="search-bar">
       <input
         type="search"
-        placeholder="Search entries…"
+        placeholder="Search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
