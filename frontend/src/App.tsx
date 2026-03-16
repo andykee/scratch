@@ -1,5 +1,5 @@
-import { JournalPage } from './components/JournalPage'
+import { ScratchPage } from './components/ScratchPage'
 
 export default function App() {
-  return <JournalPage />
+  return <ScratchPage />
 }

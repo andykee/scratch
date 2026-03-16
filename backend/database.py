@@ -2,7 +2,7 @@ import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-_DB_PATH = os.path.join(os.path.dirname(__file__), "journal.db")
+_DB_PATH = os.path.join(os.path.dirname(__file__), "scratch.db")
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{_DB_PATH}"
 
 engine = create_engine(

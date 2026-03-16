@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.database import init_db
 from backend.routers.entries import router as entries_router
 
-app = FastAPI(title="Journal API")
+app = FastAPI(title="Scratch API")
 
 app.add_middleware(
     CORSMiddleware,

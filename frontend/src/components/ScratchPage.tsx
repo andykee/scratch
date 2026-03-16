@@ -3,7 +3,7 @@ import { SearchBar } from './SearchBar'
 import { EntryList } from './EntryList'
 import { useEntries } from '../hooks/useEntries'
 
-export function JournalPage() {
+export function ScratchPage() {
   const { entries, loading, error, load, saveEntry } = useEntries()
   const [query, setQuery] = useState('')
   const bottomRef = useRef<HTMLDivElement>(null)
@@ -32,9 +32,9 @@ export function JournalPage() {
   if (error) return <div className="error-state">Error: {error}</div>
 
   return (
-    <div className="journal-page">
-      <header className="journal-header">
-        <h1>Journal</h1>
+    <div className="scratch-page">
+      <header className="scratch-header">
+        <h1>Scratch</h1>
         <SearchBar value={query} onChange={setQuery} />
         <button className="dark-toggle" onClick={() => setDark((d) => !d)} title="Toggle dark mode">
           {dark ? '☀' : '☾'}
