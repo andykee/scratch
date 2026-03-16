@@ -8,6 +8,13 @@ export function JournalPage() {
   const [query, setQuery] = useState('')
   const bottomRef = useRef<HTMLDivElement>(null)
   const hasScrolled = useRef(false)
+  const [dark, setDark] = useState(() =>
+    document.documentElement.getAttribute('data-theme') === 'dark'
+  )
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+  }, [dark])
 
   useEffect(() => {
     load()
@@ -29,6 +36,9 @@ export function JournalPage() {
       <header className="journal-header">
         <h1>Journal</h1>
         <SearchBar value={query} onChange={setQuery} />
+        <button className="dark-toggle" onClick={() => setDark((d) => !d)} title="Toggle dark mode">
+          {dark ? '☀' : '☾'}
+        </button>
       </header>
       {loading ? (
         <div className="loading">Loading…</div>
