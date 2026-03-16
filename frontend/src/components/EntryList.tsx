@@ -74,7 +74,10 @@ function TodoView({ entries }: { entries: Entry[] }) {
           </div>
           <ul className="todo-view-list">
             {todos.map((text, i) => (
-              <li key={i}>{text}</li>
+              <li key={i}>
+                <input type="checkbox" disabled />
+                <span>{text}</span>
+              </li>
             ))}
           </ul>
         </div>

@@ -322,10 +322,16 @@ body {
   gap: 4px;
 }
 
-.todo-view-list li::before {
-  content: '☐';
-  margin-right: 0.5em;
-  color: var(--text-muted);
+.todo-view-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-view-list li input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 /* Loading / error */

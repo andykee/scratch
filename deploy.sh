@@ -17,6 +17,7 @@ eval "$RSYNC --delete frontend/dist/ $SERVER:$REMOTE/frontend/dist/"
 eval "$RSYNC --exclude='.venv' --exclude='__pycache__' --exclude='*.db' backend/ $SERVER:$REMOTE/backend/"
 eval "$RSYNC nginx/nginx.conf $SERVER:$REMOTE/nginx/"
 eval "$RSYNC docker-compose.yml $SERVER:$REMOTE/"
+eval "$RSYNC delete.py backfill.py $SERVER:$REMOTE/"
 
 echo "Restarting services..."
 $SSH $SERVER "cd $REMOTE && docker compose up -d --build api web"

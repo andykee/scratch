@@ -1,8 +1,10 @@
 services:
   api:
     build: ./backend
+    ports:
+      - "127.0.0.1:8000:8000"
     volumes:
-      - ./data:/app/data
+      - ./data:/app/backend/data
     environment:
       - ALLOWED_ORIGINS=https://scratch.andykee.com
     restart: unless-stopped
