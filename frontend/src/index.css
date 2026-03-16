@@ -307,6 +307,21 @@ body {
   flex: 1;
 }
 
+/* Todo view */
+.todo-view-list {
+  list-style: none;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.todo-view-list li::before {
+  content: '☐';
+  margin-right: 0.5em;
+  color: var(--text-muted);
+}
+
 /* Loading / error */
 .loading,
 .error-state {
