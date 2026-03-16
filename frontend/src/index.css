@@ -281,13 +281,17 @@ body {
 
 .tiptap-editor .ProseMirror ul[data-type="taskList"] li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
 }
 
 .tiptap-editor .ProseMirror ul[data-type="taskList"] li > label {
   flex-shrink: 0;
-  margin-top: 4px;
+}
+
+.tiptap-editor .ProseMirror ul[data-type="taskList"] li > label input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
 }
 
 .tiptap-editor .ProseMirror ul[data-type="taskList"] li > div {
