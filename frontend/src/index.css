@@ -263,6 +263,12 @@ body {
   vertical-align: middle;
 }
 
+/* Tags */
+.tiptap-editor .ProseMirror .tag {
+  color: #7b8fe8;
+  font-weight: 500;
+}
+
 /* Syntax highlighting */
 .tiptap-editor .ProseMirror pre .hljs-comment,
 .tiptap-editor .ProseMirror pre .hljs-quote     { color: #8a8a85; font-style: italic; }
