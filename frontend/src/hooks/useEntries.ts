@@ -22,6 +22,9 @@ export function useEntries() {
 
   const saveEntry = useCallback(async (date: string, content: string) => {
     await api.updateEntry(date, content)
+    setEntries((prev) =>
+      prev.map((e) => (e.date === date ? { ...e, content } : e))
+    )
   }, [])
 
   return { entries, loading, error, load, saveEntry }
