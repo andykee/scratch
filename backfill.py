@@ -5,7 +5,9 @@ from urllib.error import HTTPError
 
 BASE = "http://127.0.0.1:8000/api/entries"
 
-for date in sys.argv[1:]:
+for raw in sys.argv[1:]:
+    parts = raw.split('-')
+    date = '-'.join(p.zfill(2) if i > 0 else p.zfill(4) for i, p in enumerate(parts))
     payload = json.dumps({"date": date}).encode()
     req = Request(BASE, data=payload, headers={"Content-Type": "application/json"})
     try:
