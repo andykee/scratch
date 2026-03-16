@@ -7,16 +7,11 @@ export function SearchBar({ value, onChange }: Props) {
   return (
     <div className="search-bar">
       <input
-        type="search"
+        type="text"
         placeholder="Search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      {value && (
-        <button className="clear-btn" onClick={() => onChange('')}>
-          ✕
-        </button>
-      )}
     </div>
   )
 }
