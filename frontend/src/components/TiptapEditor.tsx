@@ -5,6 +5,7 @@ import TaskItem from '@tiptap/extension-task-item'
 import Placeholder from '@tiptap/extension-placeholder'
 import Typography from '@tiptap/extension-typography'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import Link from '@tiptap/extension-link'
 import { ColorDecorator } from '../extensions/colorDecorator'
 import { createLowlight, common } from 'lowlight'
 
@@ -24,6 +25,14 @@ export function TiptapEditor({ content, onUpdate }: Props) {
       TaskItem.configure({ nested: true }),
       Placeholder.configure({ placeholder: 'Write something...' }),
       Typography,
+      Link.configure({
+        autolink: true,
+        openOnClick: true,
+        HTMLAttributes: {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        },
+      }),
       ColorDecorator,
     ],
     content,

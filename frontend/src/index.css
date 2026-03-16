@@ -237,6 +237,14 @@ body {
   font-size: 0.875em;
 }
 
+/* Links */
+.tiptap-editor .ProseMirror a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
 /* Hex color decorator */
 .tiptap-editor .ProseMirror .color {
   --color: transparent;
