@@ -1,11 +1,15 @@
 # Journal App
 
-Personal journal/scratchpad/todo web app. Single-user, local-first.
+Personal journal/scratchpad/todo web app. Single-user.
 
 ## Stack
 
 - **Backend:** Python + FastAPI + SQLAlchemy + SQLite (FTS5 for search)
 - **Frontend:** React 18 + TypeScript + Vite 5 + Tiptap 2
+
+## Design
+
+- Invoke the `frontend-design` skill before writing any frontend code.
 
 ## Running
 
