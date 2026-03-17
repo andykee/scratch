@@ -56,7 +56,7 @@ def get_all_entries(db: Session = Depends(get_db)):
 
 @router.post("/today", response_model=EntryResponse)
 def upsert_today(db: Session = Depends(get_db)):
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+    today = datetime.now().strftime("%Y-%m-%d")
     entry = db.query(Entry).filter(Entry.date == today).first()
     if entry is None:
         try:
