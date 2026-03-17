@@ -153,7 +153,14 @@ def delete_entry(date: str, db: Session = Depends(get_db)):
     entry = db.query(Entry).filter(Entry.date == date).first()
     if entry is None:
         raise HTTPException(status_code=404, detail="Entry not found")
-    db.execute(text("DELETE FROM entries_fts WHERE rowid = :rowid"), {"rowid": entry.id})
+    text_content = extract_text(entry.content)
+    try:
+        db.execute(
+            text("INSERT INTO entries_fts(entries_fts, rowid, date, text_content) VALUES('delete', :rowid, :date, :text_content)"),
+            {"rowid": entry.id, "date": entry.date, "text_content": text_content}
+        )
+    except Exception:
+        pass
     db.delete(entry)
     db.commit()
 
@@ -173,8 +180,8 @@ def update_entry(date: str, body: EntryUpdate, db: Session = Depends(get_db)):
     text_content = extract_text(body.content)
     try:
         db.execute(
-            text("DELETE FROM entries_fts WHERE rowid = :rowid"),
-            {"rowid": entry.id}
+            text("INSERT INTO entries_fts(entries_fts, rowid, date, text_content) VALUES('delete', :rowid, :date, :text_content)"),
+            {"rowid": entry.id, "date": entry.date, "text_content": extract_text(entry.content)}
         )
         db.execute(
             text("INSERT INTO entries_fts(rowid, date, text_content) VALUES (:rowid, :date, :text_content)"),
