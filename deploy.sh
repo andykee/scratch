@@ -19,6 +19,13 @@ eval "$RSYNC nginx/nginx.conf $SERVER:$REMOTE/nginx/"
 eval "$RSYNC docker-compose.yml $SERVER:$REMOTE/"
 eval "$RSYNC delete.py backfill.py $SERVER:$REMOTE/"
 
+if [ -f ".env" ]; then
+  echo "Syncing .env to server..."
+  eval "$RSYNC .env $SERVER:$REMOTE/.env"
+else
+  echo "Warning: no local .env file found — make sure one exists on the server."
+fi
+
 echo "Restarting services..."
 $SSH $SERVER "cd $REMOTE && docker compose up -d --build api web"
 echo "Done."

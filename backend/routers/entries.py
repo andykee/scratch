@@ -1,6 +1,7 @@
 import json
 from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
@@ -58,16 +59,20 @@ def upsert_today(db: Session = Depends(get_db)):
     today = datetime.utcnow().strftime("%Y-%m-%d")
     entry = db.query(Entry).filter(Entry.date == today).first()
     if entry is None:
-        now = now_str()
-        entry = Entry(
-            date=today,
-            content=DEFAULT_CONTENT,
-            created_at=now,
-            updated_at=now,
-        )
-        db.add(entry)
-        db.commit()
-        db.refresh(entry)
+        try:
+            now = now_str()
+            entry = Entry(
+                date=today,
+                content=DEFAULT_CONTENT,
+                created_at=now,
+                updated_at=now,
+            )
+            db.add(entry)
+            db.commit()
+            db.refresh(entry)
+        except IntegrityError:
+            db.rollback()
+            entry = db.query(Entry).filter(Entry.date == today).first()
     return entry
 
 

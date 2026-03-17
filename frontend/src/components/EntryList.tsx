@@ -11,6 +11,11 @@ function extractText(contentJson: string): string {
       if (typeof node !== 'object' || node === null) return
       const n = node as Record<string, unknown>
       if (n.type === 'text' && typeof n.text === 'string') texts.push(n.text)
+      if (n.type === 'meetingHeader' && typeof n.attrs === 'object' && n.attrs !== null) {
+        const attrs = n.attrs as Record<string, unknown>
+        if (typeof attrs.time === 'string' && attrs.time) texts.push(attrs.time)
+        if (typeof attrs.name === 'string' && attrs.name) texts.push(attrs.name)
+      }
       if (Array.isArray(n.content)) n.content.forEach(walk)
     }
     walk(doc)

@@ -2,9 +2,14 @@ import type { Entry } from '../types'
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(path, {
+    credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     ...options,
   })
+  if (res.status === 401) {
+    window.dispatchEvent(new Event('auth:logout'))
+    throw new Error('Unauthorized')
+  }
   if (!res.ok) {
     throw new Error(`${res.status} ${res.statusText}`)
   }

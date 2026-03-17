@@ -3,6 +3,20 @@ set -e
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# ── Load .env if present ──────────────────────────────────────────────────────
+if [ -f "$ROOT/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "$ROOT/.env"
+  set +a
+fi
+
+if [ -z "$SCRATCH_USERNAME" ] || [ -z "$SCRATCH_PASSWORD" ] || [ -z "$SCRATCH_SECRET" ]; then
+  echo "⚠️  SCRATCH_USERNAME, SCRATCH_PASSWORD, and SCRATCH_SECRET must be set (in .env or environment)"
+  echo "   Copy .env.example to .env and fill in the values."
+  exit 1
+fi
+
 # ── Backend ──────────────────────────────────────────────────────────────────
 echo "→ Setting up Python virtual environment…"
 

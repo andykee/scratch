@@ -1,9 +1,10 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import init_db
+from backend.routers.auth import router as auth_router, verify_session
 from backend.routers.entries import router as entries_router
 
 app = FastAPI(title="Scratch API")
@@ -22,4 +23,5 @@ app.add_middleware(
 def startup():
     init_db()
 
-app.include_router(entries_router)
+app.include_router(auth_router)
+app.include_router(entries_router, dependencies=[Depends(verify_session)])
