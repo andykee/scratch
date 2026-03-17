@@ -9,3 +9,4 @@ frontend/dist/
 *.pyc
 nginx/.htpasswd
 .env
+.DS_Store
