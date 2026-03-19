@@ -46,6 +46,9 @@ body {
 
 #root {
   height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
 }
 
 /* Layout */
@@ -53,10 +56,7 @@ body {
   max-width: 740px;
   margin: 0 auto;
   padding: 0 28px 96px;
-  height: 100%;
-  overflow-y: auto;
-  overscroll-behavior: none;
-  scrollbar-gutter: stable;
+  min-height: 100%;
 }
 
 .scratch-header {
