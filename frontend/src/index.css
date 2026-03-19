@@ -32,6 +32,11 @@
 html, body {
   height: 100%;
   scrollbar-gutter: stable;
+  overscroll-behavior: none;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
@@ -40,6 +45,7 @@ body {
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.75;
+  padding-top: env(safe-area-inset-top);
 }
 
 #root {
@@ -56,10 +62,9 @@ body {
 
 .scratch-header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top);
   background: var(--bg);
   padding: 22px 0 12px;
-  padding-top: max(22px, calc(env(safe-area-inset-top) + 10px));
   display: flex;
   align-items: center;
   gap: 14px;
