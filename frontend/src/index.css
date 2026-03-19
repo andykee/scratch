@@ -29,23 +29,19 @@
   --accent-light: #1c2b3a;
 }
 
-html, body {
+html, body, #root {
   height: 100%;
-  scrollbar-gutter: stable;
-  overscroll-behavior: none;
-}
-
-html {
-  background: var(--bg);
+  overflow: hidden;
 }
 
 body {
+  position: fixed;
+  inset: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.75;
-  padding-top: env(safe-area-inset-top);
 }
 
 #root {
@@ -57,12 +53,15 @@ body {
   max-width: 740px;
   margin: 0 auto;
   padding: 0 28px 96px;
-  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable;
 }
 
 .scratch-header {
   position: sticky;
-  top: env(safe-area-inset-top);
+  top: 0;
   background: var(--bg);
   padding: 22px 0 12px;
   display: flex;
