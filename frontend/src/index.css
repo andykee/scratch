@@ -138,9 +138,8 @@ body {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
   padding: 6px 8px;
+  line-height: 0;
   transition: color 0.15s;
 }
 
