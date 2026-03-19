@@ -59,6 +59,7 @@ body {
   top: 0;
   background: var(--bg);
   padding: 22px 0 12px;
+  padding-top: max(22px, calc(env(safe-area-inset-top) + 10px));
   display: flex;
   align-items: center;
   gap: 14px;
